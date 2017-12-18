@@ -1,0 +1,26 @@
+import React, {Component} from 'react'
+import { View, Text, TouchableOpacity } from 'react-native'
+
+export default class OneDetail  extends Component {
+  render() {
+    console.log('OneDetail item')    
+    return <View style={{
+        flex:1,
+        backgroundColor:'#576483',
+        alignItems:'center',
+        justifyContent:'center'
+      }}>
+        <Text>{ 'Tab One Screen Detail' }</Text>
+        <TouchableOpacity
+          onPress={ () => this.props.navigation.goBack() }
+          style={{
+            padding:20,
+            borderRadius:20,
+            backgroundColor:'#432456',
+            marginTop:20
+          }}>
+          <Text style={{color:'#fff'}}>{'Go back a screen this tab'}</Text>
+          </TouchableOpacity>
+      </View>
+  }
+}

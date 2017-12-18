@@ -1,0 +1,84 @@
+import React, {Component} from 'react'
+import { View, Image } from 'react-native'
+import {StackNavigator, TabBarBottom, TabNavigator, TabBarTop} from 'react-navigation'
+import One from './page/One'
+import Two from './page/Two'
+
+import {OneDetail, TwoDetail} from './routes/route'
+
+class Navigation extends Component {
+  render() {
+    return <View style={{flex: 1}}>
+      <ModalNavigator/>
+    </View>
+  }
+}
+// 设置底部tabBar
+const Tab = TabNavigator(
+  {
+    TabOne: {
+      screen:  One,
+      navigationOptions: () => ({
+        tabBarLabel: '首页',
+        title: '首页',
+        tabBarIcon: ({ tintColor }) => (
+          <Image style={{backgroundColor: tintColor, width: 20, height: 20}} />
+        )
+      })
+    },
+    TabTwo: {
+      screen: Two,
+      navigationOptions: () => ({
+        tabBarLabel: '秒杀',
+        title: '秒杀',
+        tabBarIcon: ({ tintColor }) => (
+          <Image style={{backgroundColor: tintColor, width: 20, height: 20}} />
+        )
+      })
+    }
+  },
+  {
+    tabBarComponent: TabBarBottom,
+    tabBarPosition: 'bottom',
+    swipeEnabled: false,
+    animationEnabled: false,
+    initialRouteName: 'TabOne',
+    lazy: true,
+    tabBarOptions: {
+      activeTintColor: '#EA5513',
+      inactiveTintColor: '#9E9EB5',
+      style: {
+        backgroundColor: '#ffffff'
+      }
+    }
+  }
+);
+
+// 设置导航栏
+const Navigator = StackNavigator(
+  {
+    Tab: { screen: Tab},
+    OneDetail: { screen: OneDetail},
+    TwoDetail: { screen: TwoDetail}
+  },
+  //初始导航栏状态
+  {
+    navigationOptions: {
+      headerBackTitle: null,
+      headerStyle: {elevation: 0, backgroundColor: '#fff', height: 48},      
+      showIcon: true
+    },
+  }
+);
+
+const ModalNavigator = StackNavigator(
+  {
+    MainNavigator: { screen: Navigator },
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none'
+  }
+);
+
+export default Navigation;
