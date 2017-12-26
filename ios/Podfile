@@ -1,6 +1,4 @@
 platform :ios, ‘8.0’
 
 target 'FlowerReactNative' do
-    pod 'Pgyer'
-    pod 'PgyUpdate'
 end

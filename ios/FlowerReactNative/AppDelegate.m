@@ -13,9 +13,6 @@
 #import <React/RCTRootView.h>
 #import <CodePush/CodePush.h>
 
-#import <PgySDK/PgyManager.h>
-#import <PgyUpdate/PgyUpdateManager.h>
-//
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -43,10 +40,6 @@
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
 
-  //启动基本SDK
-  [[PgyManager sharedPgyManager] startManagerWithAppId:@"9a25cd2d5f189856c42c6ae8e31cb77d"];
-  //关闭用户反馈
-  [[PgyManager sharedPgyManager] setEnableFeedback:NO];
   return YES;
 }
 
